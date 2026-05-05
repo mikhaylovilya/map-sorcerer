@@ -5,6 +5,9 @@
 # Scrape engine
 scripts/scrape/*
 
+# Raw data
+raw_data/
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

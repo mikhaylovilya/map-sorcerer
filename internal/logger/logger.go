@@ -2,7 +2,7 @@ package logger
 
 import (
 	"log/slog"
-	"mikhaylovilya/map-sorcer/internal/config"
+	"mikhaylovilya/map-sorcerer/internal/config"
 	"os"
 )
 

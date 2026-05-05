@@ -1,4 +1,4 @@
-# map-sorcer
+# Set up basic web-server carcass
 TODO:
 - Setup Carcass (config logger server)
 - Setup Docker & Docker compose

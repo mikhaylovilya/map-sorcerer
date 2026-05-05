@@ -1,0 +1,7 @@
+services:
+  mapsorcerer:
+    image: mapsorcerer
+    build:
+      context: .
+    environment:
+      CONFIG_PATH: ./config/debug.yaml
