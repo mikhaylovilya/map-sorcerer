@@ -40,30 +40,30 @@ func Parse() *Config {
 	configName := os.Getenv("CONFIG_PATH")
 	if configName == "" {
 		log.Fatal("No CONFIG_PATH found")
-		// return nil, errors.New("No CONFIG_PATH found")
 	}
 
 	pwd, err := os.Getwd()
-	configPath := filepath.Join(pwd, configName)
-	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		log.Fatalf("No config file %s was found", configPath)
-	}
-
-	var config Config
-	if err := cleanenv.ReadConfig(configPath, &config); err != nil {
-		log.Fatalf("Failed to parse config: %s", err)
-	}
 	if err != nil {
 		log.Fatalf("Working directory was not found: %s", err)
 	}
 
+	configPath := filepath.Join(pwd, configName)
+	if _, err = os.Stat(configPath); os.IsNotExist(err) {
+		log.Fatalf("No config file %s was found", configPath)
+	}
+
+	var config Config
+	if err = cleanenv.ReadConfig(configPath, &config); err != nil {
+		log.Fatalf("Failed to parse config: %s", err)
+	}
+
 	envFile := ".env"
 	envPath := filepath.Join(pwd, envFile)
-
 	if _, err = os.Stat(envPath); os.IsNotExist(err) {
 		log.Fatalf("No %s file was found", envFile)
 	}
-	if err := cleanenv.ReadConfig(envPath, &config); err != nil {
+
+	if err = cleanenv.ReadConfig(envPath, &config); err != nil {
 		log.Fatalf("Failed to parse env file: %s", err)
 	}
 
